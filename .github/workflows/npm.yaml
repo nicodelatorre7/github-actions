@@ -19,14 +19,16 @@ on:
           - latest
           - beta
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   npm-upload:
     name: NPM Package Build and Upload
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    permissions:
-      contents: read
-      packages: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
