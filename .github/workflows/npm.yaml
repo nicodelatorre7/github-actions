@@ -50,6 +50,6 @@ jobs:
       - run: npm ci
       - run: npm version --no-git-tag-version "${{ steps.semver.outputs.semver }}"
       - run: npm run build # create the ./dist directory with the files to publish
-      - run: npm publish --provenance --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
