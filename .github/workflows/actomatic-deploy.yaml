@@ -1,0 +1,21 @@
+name: Automatic deploy
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    environment:
+      name: GH_TOKEN
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
