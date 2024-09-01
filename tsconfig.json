@@ -1,0 +1,22 @@
+{
+  "include": ["src", "test"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "target": "es6",
+    "module": "ESNext",
+    "allowJs": true,
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
+    "moduleResolution": "node",
+    "skipLibCheck": true, // This is useful for libraries that have their own type definitions
+    "strictNullChecks": true,
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    }
+  }
+}

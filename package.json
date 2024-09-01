@@ -1,0 +1,32 @@
+{
+  "name": "github-actions",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicodelatorre7/github-actions.git"
+  },
+  "keywords": [
+    "github",
+    "actions"
+  ],
+  "author": "Nicolás de la Torre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicodelatorre7/github-actions/issues"
+  },
+  "homepage": "https://github.com/nicodelatorre7/github-actions#readme"
+}
