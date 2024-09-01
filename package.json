@@ -1,5 +1,5 @@
 {
-  "name": "github-actions",
+  "name": "@ndelatorre_/github-actions",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
