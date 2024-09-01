@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com
-          scope: '@stichting-allianceblock-foundation'
+        #   scope: '@stichting-allianceblock-foundation'
 
       - id: semver
         run: |
