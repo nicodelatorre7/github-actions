@@ -7,3 +7,4 @@ export const TransferType = {
 export const TEST = 4;
 
 export const MINOR_VARIABLE = 5;
+export const MAJOR_VARIABLE = 6;
