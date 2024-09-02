@@ -5,3 +5,5 @@ export const TransferType = {
 };
 
 export const TEST = 4;
+
+export const MINOR_VARIABLE = 5;
