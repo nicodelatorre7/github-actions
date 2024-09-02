@@ -4,7 +4,8 @@ export const TransferType = {
   BURN_AND_TRANSFER: 3,
 };
 
-export const TEST = 4;
-
+export const PATCH_VARIABLE = 4;
 export const MINOR_VARIABLE = 5;
 export const MAJOR_VARIABLE = 6;
+
+console.log('just a console log');
