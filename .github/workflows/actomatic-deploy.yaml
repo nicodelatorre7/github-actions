@@ -5,6 +5,10 @@ on:
       - main
       - develop
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   main:
     runs-on: ubuntu-latest
