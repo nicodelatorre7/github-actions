@@ -4,4 +4,4 @@ export const TransferType = {
   BURN_AND_TRANSFER: 3,
 };
 
-export const TEST = 5;
+export const TEST = 4;
