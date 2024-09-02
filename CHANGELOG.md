@@ -1,3 +1,15 @@
+# [0.2.0](https://github.com/nicodelatorre7/github-actions/compare/v0.1.0...v0.2.0) (2024-09-02)
+
+
+### Bug Fixes
+
+* add patch variable ([0ebddbc](https://github.com/nicodelatorre7/github-actions/commit/0ebddbcde2b188717594c014adabbe4773684de0))
+
+
+### Features
+
+* add console.log just to see the commit change ([571ba76](https://github.com/nicodelatorre7/github-actions/commit/571ba76f87ca87d3891a426d7c2d1a840c1b0b60))
+
 # [0.1.0](https://github.com/nicodelatorre7/github-actions/compare/v0.0.3...v0.1.0) (2024-09-02)
 
 
