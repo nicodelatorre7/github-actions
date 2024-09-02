@@ -55,8 +55,10 @@ jobs:
           fi
 
       - name: Generate Changelog
+        id: changelog
         run: |
           npx auto-changelog -p
+          echo "::set-output name=changelog::$(cat CHANGELOG.md)"
 
       - name: Create Git tag
         if: env.TAG_EXISTS == 'false'
@@ -65,11 +67,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md
-          git commit -m "chore: update changelog for v${{ steps.semver.outputs.semver }}"
           git tag v${{ steps.semver.outputs.semver }}
           git push origin v${{ steps.semver.outputs.semver }}
-          git push origin main
 
       - run: npm publish --access public
         env:
@@ -81,7 +80,6 @@ jobs:
         with:
           tag_name: v${{ steps.semver.outputs.semver }}
           name: v${{ steps.semver.outputs.semver }}
-          body: |
-            $(cat CHANGELOG.md)
+          body: ${{ steps.changelog.outputs.changelog }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
