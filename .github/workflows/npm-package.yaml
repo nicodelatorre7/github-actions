@@ -54,6 +54,10 @@ jobs:
             echo "TAG_EXISTS=false" >> $GITHUB_ENV
           fi
 
+      - name: Generate Changelog
+        run: |
+          npx auto-changelog -p
+
       - name: Create Git tag
         if: env.TAG_EXISTS == 'false'
         env:
@@ -61,16 +65,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "chore: update changelog for v${{ steps.semver.outputs.semver }}"
           git tag v${{ steps.semver.outputs.semver }}
           git push origin v${{ steps.semver.outputs.semver }}
+          git push origin main
 
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
-
-      - name: Generate Changelog
-        run: |
-          npx auto-changelog -p
 
       - name: Create GitHub Release
         if: env.TAG_EXISTS == 'false'
