@@ -7,3 +7,5 @@ export const TransferType = {
 export const PATCH_VARIABLE = 4;
 export const MINOR_VARIABLE = 5;
 export const MAJOR_VARIABLE = 6;
+
+console.log('just a console log');
