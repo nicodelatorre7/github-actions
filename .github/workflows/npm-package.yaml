@@ -1,0 +1,48 @@
+name: Create NPM Package with package.json version
+on:
+  push:
+    branches-ignore:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Package tag'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish-package:
+    name: NPM Package Build and Upload
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Get version from package.json
+        id: semver
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Version: $VERSION"
+          echo "PACKAGE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "::set-output name=semver::${VERSION}"
+
+      - run: npm ci
+      - run: npm version --no-git-tag-version "${{ steps.semver.outputs.semver }}"
+      - run: npm run build # create the ./dist directory with the files to publish
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
