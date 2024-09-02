@@ -9,4 +9,4 @@ export const MINOR_VARIABLE = 5;
 export const MAJOR_VARIABLE = 6;
 
 console.log('just changing a console log');
-console.log('version v0.2.4');
+console.log('version v0.2.5');
