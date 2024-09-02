@@ -53,3 +53,13 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.semver.outputs.semver }}
+          name: v${{ steps.semver.outputs.semver }}
+          body: |
+            Release of version v${{ steps.semver.outputs.semver }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
