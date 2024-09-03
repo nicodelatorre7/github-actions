@@ -2,7 +2,6 @@ name: Automatic deploy
 on:
   push:
     branches:
-      - main
       - develop
 
 permissions:
