@@ -46,7 +46,7 @@ jobs:
       - name: Check if Tag Exists
         id: check_tag
         run: |
-          if git ls-remote --tags origin | grep -q "refs/tags/v${{ steps.semver.outputs.semver }}$"; then
+          if git ls-remote --tags origin | grep -q "refs/tags/v${{ steps.semver.outputs.semver }}"; then
             echo "Tag v${{ steps.semver.outputs.semver }} already exists."
             echo "TAG_EXISTS=true" >> $GITHUB_ENV
           else
@@ -82,6 +82,7 @@ jobs:
         with:
           tag_name: v${{ steps.semver.outputs.semver }}
           name: v${{ steps.semver.outputs.semver }}
-          body: ${{ steps.changelog.outputs.changelog }}
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
