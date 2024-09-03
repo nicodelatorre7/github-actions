@@ -77,13 +77,10 @@ jobs:
           git tag v${{ steps.semver.outputs.semver }}
           git push origin v${{ steps.semver.outputs.semver }}
 
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
-
       - name: Create GitHub Release
         if: env.TAG_EXISTS == 'false'
         run: |
-          gh release create v${{ steps.semver.outputs.semver }} --title "v${{ steps.semver.outputs.semver }}" --notes ${{ steps.changelog.outputs.changelog }}
+          CHANGELOG_CONTENT=$(cat CHANGELOG.md)
+          gh release create v${{ steps.semver.outputs.semver }} --title "v${{ steps.semver.outputs.semver }}" --notes "$CHANGELOG_CONTENT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
