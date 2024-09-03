@@ -81,3 +81,7 @@ jobs:
           gh release create v${{ steps.semver.outputs.semver }} --title "v${{ steps.semver.outputs.semver }}" --notes "$CHANGELOG_CONTENT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
