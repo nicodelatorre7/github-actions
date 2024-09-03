@@ -83,5 +83,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm publish --access public
+        if: env.TAG_EXISTS == 'false'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
